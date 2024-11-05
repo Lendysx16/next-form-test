@@ -151,11 +151,11 @@ export const Form = () => {
         />
 
         <RoundButton
-          variant={noErrors ? 'default' : 'passive'}
+          variant={noErrors && page !== 4 ? 'default' : 'passive'}
           className="flex items-center justify-between"
           onClick={(e) => {
             e.preventDefault();
-            setPage((prev) => prev + 1);
+            if (noErrors && page != 4) setPage((prev) => prev + 1);
           }}>
           Следующий шаг{' '}
           <svg width="40" height="41" viewBox="0 0 40 41" xmlns="http://www.w3.org/2000/svg">
