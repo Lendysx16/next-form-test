@@ -58,7 +58,7 @@ export function SelectWithSearch<G, T extends { [key: string]: G }>({
 
   useEffect(() => {
     setInputValue(String(value?.[itemValue] || ''));
-  }, [value, itemValue])
+  }, [value, itemValue]);
 
   const inputRef = useRef<HTMLDivElement>(null);
   const portalElementRef = useRef<HTMLDivElement>(null);

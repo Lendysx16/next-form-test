@@ -18,12 +18,12 @@ export default function Home() {
           Производственные параметры фильма
         </h3>
 
-        <RoundButton > <Link href='/?reset=true'>Отменить заполнение  </Link></RoundButton>
+        <RoundButton>
+          <Link href="/">Отменить заполнение </Link>
+        </RoundButton>
       </div>
 
       <Form />
-
-
     </div>
   );
 }

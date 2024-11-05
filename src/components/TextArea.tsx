@@ -11,13 +11,13 @@ interface Props extends TextareaHTMLAttributes<HTMLTextAreaElement> {
 
 export const TextArea = ({ className, errorMessage, label, ...props }: Props) => {
   const inputRef = useRef<HTMLTextAreaElement>(null);
- 
+
   return (
     <div className={twMerge('flex w-full flex-col gap-3', className)}>
       {label && <label className="select-none text-base text-[#1d1d1ddd]">{label}</label>}
       <div
         className={twMerge(
-          'flex min-h-[58px] w-full cursor-text items-center justify-between rounded-md border border-[#00000050] px-5 has-[:focus]:border-foreground flex-1',
+          'flex min-h-[58px] w-full flex-1 cursor-text items-center justify-between rounded-md border border-[#00000050] px-5 has-[:focus]:border-foreground',
           errorMessage && '!border-danger gap-5'
         )}
         onClick={() => {
@@ -30,8 +30,8 @@ export const TextArea = ({ className, errorMessage, label, ...props }: Props) =>
         />
       </div>
       {errorMessage && (
-          <span className="flex-1 text-right text-sm leading-4 text-danger"> {errorMessage} </span>
-        )}
+        <span className="flex-1 text-right text-sm leading-4 text-danger"> {errorMessage} </span>
+      )}
     </div>
   );
 };

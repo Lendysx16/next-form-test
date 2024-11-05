@@ -7,7 +7,7 @@ interface Props extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'children'
   onClick?: (e: React.MouseEvent) => void;
 }
 
-export const RoundButton = ({className, children, variant, ...props}: Props) => {
+export const RoundButton = ({ className, children, variant, ...props }: Props) => {
   variant = variant || 'default';
   let styles = '';
 

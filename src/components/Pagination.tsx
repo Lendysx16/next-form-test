@@ -16,9 +16,8 @@ export const Pagination = (props: Props) => {
     e.stopPropagation();
     props.onPageChange(page);
   }
-  
-    
-    const isFirstPage = props.currentPage === props.firstPage;
+
+  const isFirstPage = props.currentPage === props.firstPage;
   const isLastPage = props.currentPage === props.lastPage;
   const diffToLastPage = props.lastPage - props.currentPage;
   const diffToFirstPage = props.currentPage - props.firstPage;
@@ -26,7 +25,7 @@ export const Pagination = (props: Props) => {
     'rounded-full h-[40px] w-[40px] text-[#00000080] flex items-center justify-center';
 
   return (
-    <div className={twMerge('flex items-end gap-2 justify-center', props.className)}>
+    <div className={twMerge('flex items-end justify-center gap-2', props.className)}>
       {!isFirstPage && (
         <button
           onClick={(e) => handleClick(e, props.currentPage - 1)}
@@ -55,21 +54,30 @@ export const Pagination = (props: Props) => {
       )}
 
       {!isFirstPage && (
-        <button onClick={(e) => handleClick(e, props.currentPage - 1)} className={twMerge(buttonStyle, '')}>{props.currentPage - 1}</button>
+        <button
+          onClick={(e) => handleClick(e, props.currentPage - 1)}
+          className={twMerge(buttonStyle, '')}>
+          {props.currentPage - 1}
+        </button>
       )}
 
-      <button onClick={(e) => handleClick(e, props.currentPage)} className={twMerge(buttonStyle, 'border-$[#00000020] border text-foreground')}>
+      <button
+        onClick={(e) => handleClick(e, props.currentPage)}
+        className={twMerge(buttonStyle, 'border-$[#00000020] border text-foreground')}>
         {props.currentPage}
       </button>
 
       {!isLastPage && (
-        <button onClick={(e) => handleClick(e, props.currentPage + 1)} className={twMerge(buttonStyle, '')}>{props.currentPage + 1}</button>
+        <button
+          onClick={(e) => handleClick(e, props.currentPage + 1)}
+          className={twMerge(buttonStyle, '')}>
+          {props.currentPage + 1}
+        </button>
       )}
-
 
       {diffToLastPage >= 2 && (
         <>
-          {diffToLastPage > 2 && <span className={buttonStyle}>...</span>} 
+          {diffToLastPage > 2 && <span className={buttonStyle}>...</span>}
           <button onClick={(e) => handleClick(e, props.lastPage)} className={buttonStyle}>
             {props.lastPage}
           </button>

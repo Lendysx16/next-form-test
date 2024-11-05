@@ -1,11 +1,13 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import localFont from 'next/font/local'
+import localFont from 'next/font/local';
 
 import React from 'react';
 
-
-const helveticaFont = localFont({src: './fonts/helvetica/HelveticaNeueCyr-Medium.otf', variable: '--font-helvetica'});
+const helveticaFont = localFont({
+  src: './fonts/helvetica/HelveticaNeueCyr-Medium.otf',
+  variable: '--font-helvetica'
+});
 
 export const metadata: Metadata = {
   title: 'Create Next App',

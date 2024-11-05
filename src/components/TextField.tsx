@@ -14,7 +14,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 export const TextField = ({ className, errorMessage, label, mask, ...props }: Props) => {
   const maskedRef = useMask({ mask: mask || '', replacement: { _: /\d/ } });
   const inputRef = useRef<HTMLInputElement>(null);
- 
+
   return (
     <div className={twMerge('flex w-full flex-col gap-3', className)}>
       {label && <label className="select-none text-base text-[#1d1d1ddd]">{label}</label>}

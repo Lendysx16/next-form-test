@@ -8,11 +8,9 @@ import countriesArray from '@/data/countries';
 import { Pagination } from './Pagination';
 import { RoundButton } from './RoundButton';
 import { useEffect, useMemo, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
 
 export const Form = () => {
   const [page, setPage] = useState(1);
-  const query = useSearchParams();
 
   const [values, setValues] = useState<{
     country: (typeof countriesArray)[0] | null;
@@ -43,7 +41,7 @@ export const Form = () => {
       errors.selectedGenre = 'Заполните поле';
     }
 
-    if(values.number && !/^\d{3}-\d{3}-\d{3}-\d{3}-\d{3}$/.test(values.number)) {
+    if (values.number && !/^\d{3}-\d{3}-\d{3}-\d{3}-\d{3}$/.test(values.number)) {
       errors.number = 'Неверный формат';
     }
 
@@ -61,10 +59,10 @@ export const Form = () => {
   const noErrors = useMemo(() => Object.keys(errors).length === 0, [errors]);
 
   useEffect(() => {
-    if (localStorage.getItem('values') && !query.get('reset')) {
+    if (localStorage.getItem('values')) {
       setValues(JSON.parse(localStorage.getItem('values')!));
     }
-  }, [setValues, query]);
+  }, [setValues]);
 
   useEffect(() => {
     localStorage.setItem('values', JSON.stringify(values));
@@ -146,19 +144,20 @@ export const Form = () => {
           lastPage={4}
           currentPage={page}
           firstPage={1}
-          onPageChange={(e) => {setPage(e)}}
+          onPageChange={(e) => {
+            setPage(e);
+          }}
           className="lg:absolute lg:left-1/2 lg:-translate-x-1/2"
         />
 
         <RoundButton
           variant={noErrors ? 'default' : 'passive'}
           className="flex items-center justify-between"
-          onClick={e => {
+          onClick={(e) => {
             e.preventDefault();
             setPage((prev) => prev + 1);
           }}>
           Следующий шаг{' '}
-          
           <svg width="40" height="41" viewBox="0 0 40 41" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M17.0001 21.297C16.4478 21.297 16.0001 20.8493 16.0001 20.297C16.0001 19.7447 16.4478 19.297 17.0001 19.297L17.0001 21.297ZM30.7072 19.5899C31.0977 19.9804 31.0977 20.6136 30.7072 21.0041L24.3432 27.3681C23.9527 27.7586 23.3195 27.7586 22.929 27.3681C22.5385 26.9775 22.5385 26.3444 22.929 25.9539L28.5858 20.297L22.929 14.6401C22.5385 14.2496 22.5385 13.6165 22.929 13.2259C23.3195 12.8354 23.9527 12.8354 24.3432 13.2259L30.7072 19.5899ZM17.0001 19.297L30.0001 19.297L30.0001 21.297L17.0001 21.297L17.0001 19.297Z"
