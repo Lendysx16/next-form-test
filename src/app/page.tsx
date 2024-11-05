@@ -4,7 +4,7 @@ import { Inter_Tight } from 'next/font/google';
 import { twMerge } from 'tailwind-merge';
 import Link from 'next/link';
 
-const interTightFont = Inter_Tight({ variable: '--font-inter' });
+const interTightFont = Inter_Tight({ variable: '--font-inter', subsets: ['cyrillic'] });
 
 export default function Home() {
   return (
